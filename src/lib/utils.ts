@@ -43,7 +43,7 @@ export function constructMetadata({
             title,
             description,
             images: [image],
-            creator: "@joshtriedcoding",
+            creator: "@pisokrates",
         },
         icons,
         metadataBase: new URL("smart-pdf-tau.vercel.app"),
