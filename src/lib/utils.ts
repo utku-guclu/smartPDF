@@ -46,7 +46,7 @@ export function constructMetadata({
             creator: "@pisokrates",
         },
         icons,
-        metadataBase: new URL("smart-pdf-tau.vercel.app"),
+        metadataBase: new URL("https://smart-pdf-tau.vercel.app"),
         themeColor: "#FFF",
         ...(noIndex && {
             robots: {
