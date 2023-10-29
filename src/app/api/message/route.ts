@@ -49,13 +49,13 @@ export const POST = async (req: NextRequest) => {
     });
 
     const pinecone = await getPineconeClient();
-    const args = {
-        pineconeIndex: pinecone.Index("smartpdf"), // Set your index here
-        namespace: file.id,
-        // Other configuration properties as needed
-    };
+    const pineconeIndex = pinecone.Index("smartpdf");
 
-    const vectorStore = new PineconeStore(embeddings, args);
+    const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
+        pineconeIndex,
+        // namespace: file.id, // PineconeBadRequestError: The requested feature 'Namespaces' is not supported by the current index type 'Starter'.
+        namespace: "",
+    });
 
     const results = await vectorStore.similaritySearch(message, 4);
 
